@@ -7,8 +7,12 @@ public class Driver {
 		// TODO Auto-generated method stub
 		//new keyword allocates space
 		
-		MainMenu menu = new MainMenu();
-		menu.start();
+		//MainMenu menu = new MainMenu();
+		//menu.start();
+		
+		int a = 2;
+		Integer b = 2;
+		System.out.println(b == a);
 		
 	}
 

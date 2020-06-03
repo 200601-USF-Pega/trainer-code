@@ -1,10 +1,12 @@
 package com.revature.tourofheroes.dao;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.tourofheroes.models.Hero;
@@ -14,10 +16,12 @@ public class HeroRepoFile implements IHeroRepo {
 	@Override
 	public Hero addHero(Hero hero) {
 		// TODO Auto-generated method stub
+		List<Hero> currentHeros = this.getAllHeros();
 		try {
 			ObjectOutputStream objectOutputStream = 
 					new ObjectOutputStream(new FileOutputStream(filepath));
-			objectOutputStream.writeObject(hero);
+			currentHeros.add(hero);
+			objectOutputStream.writeObject(currentHeros);
 			objectOutputStream.close();
 			return hero;
 		} catch (IOException e) {
@@ -34,18 +38,19 @@ public class HeroRepoFile implements IHeroRepo {
 		try {
 			ObjectInputStream inputStream = 
 					new ObjectInputStream(new FileInputStream(filepath));
-			Hero hero;
-			hero = (Hero) inputStream.readObject();
+			List<Hero> retrievedHeros = (ArrayList<Hero>) inputStream.readObject();
 			inputStream.close();
+			return retrievedHeros;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			//Just in class Hero class is not found
 			e.printStackTrace();
-		}
-		return null;
+		} 
+		
+		return new ArrayList<Hero>();
 	}
 
 }

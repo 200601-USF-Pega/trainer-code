@@ -1,5 +1,8 @@
 package com.revature.tourofheroes.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.revature.tourofheroes.dao.IHeroRepo;
 import com.revature.tourofheroes.exceptions.InvalidHealthException;
 import com.revature.tourofheroes.models.Hero;
@@ -27,12 +30,13 @@ public class HeroService {
 				
 				int healthLevel = inputValidation.getValidInt("Enter health level:");
 				
-				boolean isAlive = inputValidation.getValidBoolean("Enter living status (true or false): ");
+				boolean isAlive = inputValidation.getValidBoolean("Alive? (true or false): ");
 				
 				try {
 					Hero newHero = new Hero(name, specialmoves.toString().split(","), healthLevel, isAlive);
-					System.out.println("New Hero Created!");
+					System.out.println("Creating Hero");
 					System.out.println(repo.addHero(newHero));
+					System.out.println("New Hero Created");
 					success = true;
 				} catch (InvalidHealthException ex) {
 					System.out.println("Invalid health level! Please repeat your input");
@@ -41,5 +45,11 @@ public class HeroService {
 			} while (!success);
 		
 		
+	}
+	public void getHeros() {
+		List<Hero> retrievedHeros = repo.getAllHeros();
+		for(Hero hero: retrievedHeros) {
+			System.out.println(hero);
+		}
 	}
 }

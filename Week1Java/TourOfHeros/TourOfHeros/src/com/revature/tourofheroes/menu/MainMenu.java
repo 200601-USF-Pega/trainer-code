@@ -14,7 +14,8 @@ public class MainMenu {
 			System.out.println("Welcome to my tour of heroes app");
 			System.out.println("What would you like to do?");
 			System.out.println("[0] Create a hero?");
-			System.out.println("[1] Exit");
+			System.out.println("[1] Get all heroes?");
+			System.out.println("[2] Exit");
 			
 			//switch for user input to point them to appropriate places in the code 
 			
@@ -24,13 +25,15 @@ public class MainMenu {
 				service.createNewHero();
 				break;
 			case "1":
+				service.getHeros();
+				break;
+			case "2":
 				System.out.println("Exiting....");
-				System.exit(0);
 				break;
 			default:
 				System.out.println("Invalid input please try again!");
 					
 			}
-		} while(!userInput.equals("1"));
+		} while(!userInput.equals("2"));
 	}
 }
