@@ -1,6 +1,5 @@
 package com.revature.tourofheroes.dao;
 
-import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,8 +12,9 @@ import com.revature.tourofheroes.models.Hero;
 
 public class HeroRepoFile implements IHeroRepo {
 	private String filepath= "src/resources/Hero.txt";
+	//the synchronized keyword makes sure that only one thread can access this method at a time
 	@Override
-	public Hero addHero(Hero hero) {
+	public synchronized Hero addHero(Hero hero) {
 		// TODO Auto-generated method stub
 		List<Hero> currentHeros = this.getAllHeros();
 		try {

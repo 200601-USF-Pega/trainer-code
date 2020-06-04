@@ -35,12 +35,19 @@ public class HeroService {
 				try {
 					Hero newHero = new Hero(name, specialmoves.toString().split(","), healthLevel, isAlive);
 					System.out.println("Creating Hero");
-					System.out.println(repo.addHero(newHero));
-					System.out.println("New Hero Created");
+					//Note that there's a thread constructor that takes in a runnable
+					// Note that Runnable is a functional interface, it has one and only one method run()
+					// lambda expressions are used to represent a method interface
+					// we're using a lambda expression to represent a runnable 
+					Thread addHeroThread = new Thread(() -> {
+						repo.addHero(newHero);
+						System.out.println("Hero Added!");
+					});
+					addHeroThread.start();
 					success = true;
 				} catch (InvalidHealthException ex) {
 					System.out.println("Invalid health level! Please repeat your input");
-				}
+				} 
 				
 			} while (!success);
 		
