@@ -12,20 +12,14 @@ import java.util.List;
 import java.util.Map;
 
 import com.revature.tourofheroes.models.Hero;
+import com.revature.tourofheroes.service.ConnectionService;
 
 public class HeroRepoDB implements IHeroRepo{
 	
-	Connection connection;
+	ConnectionService connectionService;
 	
-	public HeroRepoDB() {
-		try  {
-			connection = DriverManager.getConnection("jdbc:postgresql://drona.db.elephantsql.com:5432/pelefvez", 
-					"pelefvez", "YabO1-tY1u781YXgREQK21TMwS2fRC9p");
-			
-		} catch (SQLException e) {
-			System.out.println("Exception: " + e.getMessage());
-			e.printStackTrace();
-		}
+	public HeroRepoDB(ConnectionService connectionService) {
+		this.connectionService = connectionService;
 	}
 
 	@Override
@@ -36,14 +30,14 @@ public class HeroRepoDB implements IHeroRepo{
 		try {
 			
 			
-			PreparedStatement heroStatement = connection.prepareStatement("INSERT INTO heroes VALUES (?, ?, ?)");
+			PreparedStatement heroStatement = connectionService.getConnection().prepareStatement("INSERT INTO heroes VALUES (?, ?, ?)");
 			heroStatement.setString(1, hero.getName());
 			heroStatement.setInt(2, hero.getHealthLevel());
 			heroStatement.setInt(3, hero.isAlive()?1:0);
 			heroStatement.executeUpdate();
 			
 			for (String move : hero.getSpecialMove()) {
-				Statement moveStatement = connection.createStatement();
+				Statement moveStatement = connectionService.getConnection().createStatement();
 				moveStatement.executeUpdate("INSERT INTO herospecialmoves (heroName, specialMove) VALUES ('"
 						+ hero.getName() + "', '" + move + "');");
 			}
@@ -66,7 +60,7 @@ public class HeroRepoDB implements IHeroRepo{
 		Map<String, ArrayList<String>> specialMoves = new HashMap<String, ArrayList<String>>();
 		
 		try {
-			Statement s = connection.createStatement();
+			Statement s = connectionService.getConnection().createStatement();
 			s.executeQuery("SELECT h.*, hs.specialMove " + 
 					"FROM heroes AS h " + 
 					"LEFT JOIN herospecialmoves AS hs " + 

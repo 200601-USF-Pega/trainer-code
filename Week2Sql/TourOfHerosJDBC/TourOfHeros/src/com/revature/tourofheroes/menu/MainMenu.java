@@ -3,12 +3,14 @@ package com.revature.tourofheroes.menu;
 import java.util.Scanner;
 
 import com.revature.tourofheroes.dao.HeroRepoDB;
+import com.revature.tourofheroes.service.ConnectionService;
 //import com.revature.tourofheroes.dao.HeroRepoFile;
 import com.revature.tourofheroes.service.HeroService;
 
 public class MainMenu {
 	private Scanner input = new Scanner(System.in);
-	private HeroService service = new HeroService(new HeroRepoDB());
+	private ConnectionService connectionService = new ConnectionService();
+	private HeroService service = new HeroService(new HeroRepoDB(connectionService));
 	public void start() {
 		String userInput;
 		do {
