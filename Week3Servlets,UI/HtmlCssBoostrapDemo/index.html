@@ -28,22 +28,52 @@
         what your end user interacts with
     -->
     <h1 class="jumbotron">Lecture on HTML, CSS, BOOTSTRAP</h1>
-    <div>
+    <div class = "container">
+        <h1>HTML</h1>
+            <h2>What is HTML?</h2>
+            <ul>
+                <li>Hypertext Markup Language</li>
+                <li>It defines the structure of your webpage</li>
+                <li>what goes where</li>
+                <li>use tags to describe the elements of your webpage</li>
+            </ul>
+            <h2>How is your webpage read by your browser?</h2>
+            <ol>
+                <li>Request</li>
+                <li>Response</li>
+                <li>Build</li>
+                <li>Render</li>
+            </ol>
+            <p>
+            Client - web browser <br/>
+            server - holds your HTML pages for you<br/>
+            Client requests, server responds, client downloads needed resources to display webpage, client builds webpage <br/>
+            <a href="https://varvy.com/pagespeed/display.html" target="_blank">Click here for more info</a>
+            </p>
+            <h2>What version of HTML are we working with?</h2>
+            <p>HTML5, The living standard, features get added to it</p>
+            <h2>Who's in charge of this living standard?</h2>
+            <p>WHATWG: Web Hypertext Application Technology Working Group</p>
+            <h2>Which broswers support HTML5?</h2>
+            <a href="https://caniuse.com/#search=html5" target="_blank">Click here to find out</a>
+        
+    </div>
+    <div class = "container">
         This is a div tag
     </div>
-    <div>
+    <div class = "container">
         This is a generic block element, it takes some vertical space
     </div>
-    <div>
+    <div class = "container">
         <span>generic inline element, does not take vertical</span>
         <span>Exists side by side with other elements if space permits</span>
     </div>
-    <div>
+    <div class = "container">
         <p>This is a paragraph tag, its also block</p>
         <article>This is an article, like a paragraph, takes less vertical space than paragraph tags</article>
         <a href="https://agilemanifesto.org/">This is our page to beat!</a>
     </div>
-    <div>
+    <div class = "container">
         <header>Difference between head, header, heading?</header>
         <p>Head tag encapsulates meta information about your html resource</p>
         <p>The header is a semantic element that describes a header</p>
@@ -59,7 +89,7 @@
             We don't use tags to make words appear <b> bolder </b> or <i>italicized </i> because HTML shouldn't describe how things look; just what they are.
         </p>
     </div>
-    <div>
+    <div class = "container">
         <p>Presenting a collection of stuff to end user</p>
         <p>
             Lists
@@ -73,9 +103,9 @@
             </ul>
         </p>
     </div>
-    <div>
+    <div class = "container">
         <p>Tables</p>
-        <table>
+        <table class = "table">
             <thead>
                 <th>Name</th>
                 <th>Favorite Color</th>
@@ -312,5 +342,36 @@
             <a href = "https://www.w3schools.com/css/css_boxmodel.asp" target="_blank">Click Here to learn more about it</a>
         </div>
        </div>
+       <div class="container">
+        <h2>Responsive Web Design</h2>
+        <p>Some questions that keep you up at night as a web developer:
+           <ul>
+               <li> 
+                 If I resize my screen, will my webapp render properly?
+               </li>
+             <li>
+                 Will end users still be able to make sense of the resulting reorganization due to minimizing/maximizing the screen?
+             </li>
+             <li>
+                 Will there be horizontal scrolling?
+             </li>
+             <li>
+                 How will my page adapt if accessed from different devices?
+             </li>
+             <li>
+                 Did I do anything to address these concerns???
+             </li>
+           </ul>
+            These questions come up when you're trying to design a responsive web page. Responsive web design
+            is all about designing pages so they render well on any window. 
+            And, if you're really good at CSS you can address these concerns by yourself. 
+            But why should you?
+        </p>
+    </div>
+     <div class = "container">
+         <h2>Boostrap JS</h2>
+         <p>CSS framework, responsive, mobile first</p>
+         <a href= "https://getbootstrap.com/" target = "_blank">Read ALL about it here</a>
+     </div>
 </body>
 </html>
