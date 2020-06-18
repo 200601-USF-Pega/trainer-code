@@ -10,12 +10,13 @@ public class ServletUno extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("In the get method of the Servlet Uno class");
-        resp.setContentType("text/html");
+       resp.setContentType("text/html");
         resp.getWriter().write(
                 "<html>" +
                 "<body>" +
                 "<p>" +
-                "Welcome to the get place" +
+                "Welcome to the get place " +
+                 req.getParameter("Name")       +
                 "</p>" +
                 "</body>" +
                 "</html>"

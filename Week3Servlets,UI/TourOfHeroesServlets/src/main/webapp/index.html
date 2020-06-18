@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Tour of Heroes</title>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add a hero</h2>
+    <form action="/TourOfHeroes/hero.add" method="post">
+        <div class="form-group">
+            <input type="text" name="name" placeholder="Enter Hero Name"/>
+        </div>
+        <div class="form-group">
+            <input type="text" name="specialMoves" placeholder="Enter moves! Separate by commas">
+        </div>
+        <div class="form-group">
+            <input type="number" name="healthLevel" placeholder="Enter Health Level"/>
+        </div>
+        <div class="form-group">
+            <label for="isAlive">Alive?</label>
+            <input type="checkbox" name="isAlive" id="isAlive">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Add Hero">
+    </form>
+</div>
+<div class="container">
+    <h2>Get Heroes</h2>
+    <form action="/TourOfHeroes/hero.get" method="get">
+        <input type="submit" class="btn btn-primary"  value="Get all Heroes">
+    </form>
+</div>
+</body>
+</html>

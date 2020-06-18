@@ -16,4 +16,22 @@
     <servlet-name>ServletUno</servlet-name>
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ErrorHandler</servlet-name>
+    <servlet-class>com.revature.servletdemo.servlets.ErrorHandlerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ErrorHandler</servlet-name>
+    <url-pattern>/errorhandler</url-pattern>
+  </servlet-mapping>
+
+<!--Mapping errors and exceptions to my errorhandler servlet-->
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/errorhandler</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/errorhandler</location>
+  </error-page>
 </web-app>
