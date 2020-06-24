@@ -7,11 +7,16 @@
             function getAllHeroes() {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status > 199) {
-                        document.querySelectorAll("#heroTable tbody tr").forEach(function(e){e.remove()});
+                    if (this.readyState == 4 && this.status > 199 && this.status < 300) {
+                        document.querySelectorAll("#heroTable tbody tr")
+                            .forEach(
+                                function(element) {
+                                    element.remove();
+                                }
+                        );
 
                         heroes = JSON.parse(this.responseText);
-                        let table = document.querySelector("#heroTable");
+                        let table = document.querySelector("#heroTable tbody");
 
                         for (let i = 0; i < heroes.length; ++i) {
                             let row = table.insertRow(table.rows.length);
@@ -41,9 +46,9 @@
                 var req = new XMLHttpRequest();
                 req.onreadystatechange = function() {
                     if (this.readyState > 3) {
-                        document.querySelector("#inpName").innerHTML = "";
-                        document.querySelector("#inpHealth").innerHTML = "";
-                        document.querySelector("#inpAlive").innerHTML = "";
+                        document.querySelector("#inpName").value = "";
+                        document.querySelector("#inpHealth").value = "";
+                        document.querySelector("#inpAlive").value = "off";
                     }
                 }
                 
